@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <link rel="stylesheet/less" type="text/css" href="./index.less" />
+  <script src="https://unpkg.com/less@4.1.1/dist/less.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+  </div>
+  <script type="text/babel">
+    'use strict';
+    class LikeButton extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { list: [1, 1, 1, 1,] };
+      }
+
+      render() {
+        if (this.state.liked) {
+          return 'You liked this.';
+        }
+
+        return (
+          <div className='list'>
+            {
+              this.state.list.map((i, index) => <div className="part" key={index}>{index}</div>)
+            }
+          </div>
+        );
+      }
+    }
+    const domContainer = document.querySelector('#root');
+    ReactDOM.render(React.createElement(LikeButton), domContainer);
+  </script>
+</body>
+
+</html>
